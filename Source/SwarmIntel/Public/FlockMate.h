@@ -3,42 +3,26 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SwarmManager.h"
 #include "GameFramework/Actor.h"
-#include "SwarmMate.generated.h"
+#include "FlockMate.generated.h"
 
 UCLASS()
-class SWARMINTEL_API ASwarmMate : public AActor
+class SWARMINTEL_API AFlockMate : public AActor
 {
 	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere)
-	uint32 FlockSize;
-
-	UPROPERTY(EditAnywhere)
-	bool Debugging;
-
-private:
-	// 群れの個体
-	TArray<TObjectPtr<AActor>> FlockMateArray;
-	// 分離
-	void Seperate();
-	// 整列
-	void Align();
-	//	結束
-	void Cohesive();
-
-	//
-	void SetupComponent();
-
-public:
+	
+public:	
 	// Sets default values for this actor's properties
-	ASwarmMate();
+	AFlockMate();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	TObjectPtr<ASwarmManager> GetSwarmManager();
 
-public:
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };
