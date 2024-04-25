@@ -20,6 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	TObjectPtr<ASwarmManager> GetSwarmManager();
+	TObjectPtr<ASwarmManager> Manager;
 
 public:	
 	// Called every frame

@@ -37,13 +37,18 @@ void AFlockMate::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	Manager = GetSwarmManager();
+	Manager->JoinToFlock(this);
 }
 
 // Called every frame
 void AFlockMate::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	TObjectPtr<ASwarmManager> m = GetSwarmManager();
-	m->JoinToFlock(this);
+
+	FVector dir = FVector(Manager->GetActorLocation() - this->GetActorLocation());
+	dir.Normalize();
+
+	this->SetActorLocation(this->GetActorLocation() + dir);
 }
 
