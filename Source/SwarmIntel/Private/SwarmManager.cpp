@@ -1,6 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "SwarmManager.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -51,11 +49,16 @@ void ASwarmManager::JoinToFlock(TObjectPtr<AActor> actor)
 	}
 }
 
+TArray<TObjectPtr<AActor>> ASwarmManager::GetFlockMates()
+{
+	return  this->FlockMateArray;
+}
 
 // Called when the game starts or when spawned
 void ASwarmManager::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	SetupComponent();
 }
 
@@ -63,6 +66,7 @@ void ASwarmManager::BeginPlay()
 void ASwarmManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 	int32 len = FlockMateArray.Num();
 	FString message = FString::FromInt(len).Append("= Length");
 	UKismetSystemLibrary::PrintString(this, message, 1, 0, FColor::Purple);

@@ -1,5 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -20,6 +19,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	TObjectPtr<ASwarmManager> GetSwarmManager();
+	TObjectPtr<AActor> GetOtherMate();
 	TObjectPtr<ASwarmManager> Manager;
 
 public:	
